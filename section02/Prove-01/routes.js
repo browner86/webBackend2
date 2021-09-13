@@ -1,9 +1,9 @@
 const fs = require ('fs');
-
+const users = [];
 const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
-
+    
 
 if (url === '/'){
     res.write('<html>');
@@ -14,10 +14,36 @@ if (url === '/'){
     res.write('<input type="text" name="userName"><br>');
     res.write('<label for="userName">User Name</label><br>');
     res.write('<button type="submit">Send</button></form>');
+    res.write('<a href="./users">See list of users</a>')
     res.write('</body>');
     res.write('</html>');
     return res.end();
 }
+
+// if (url === '/users') {
+//     res.write('<html>');
+//     res.write('<head><title>Users</title></head>');
+//     res.write('<body>');
+//     res.write('<h1>Users</h1>');
+//     res.write('<ul>')
+//     res.write('<li>')
+//     res.write('Bob')
+//     res.write('</li>')
+//     res.write('<li>')
+//     res.write('Carol')
+//     res.write('</li>')
+//     res.write('<li>')
+//     res.write('Steve')
+//     res.write('</li>')
+//     res.write('<li>')
+//     res.write('Demi')
+//     res.write('</li>')
+//     res.write('</ul>')
+//     res.write('</body>');
+//     res.write('</html>');
+//     return res.end
+    
+// }
 
 if (url === '/users') {
     res.write('<html>');
@@ -25,24 +51,20 @@ if (url === '/users') {
     res.write('<body>');
     res.write('<h1>Users</h1>');
     res.write('<ul>')
-    res.write('<li>')
-    res.write('Bob')
-    res.write('</li>')
-    res.write('<li>')
-    res.write('Carol')
-    res.write('</li>')
-    res.write('<li>')
-    res.write('Steve')
-    res.write('</li>')
-    res.write('<li>')
-    res.write('Demi')
-    res.write('</li>')
+    console.log(users, "before foreach");
+    users.forEach(element => {
+        res.write('<li>')
+        res.write(element)
+        res.write('</li>')
+    });
+    console.log(users, "after foreach");
     res.write('</ul>')
     res.write('</body>');
     res.write('</html>');
     return res.end
     
 }
+
 if (url === '/create-user' && method === 'POST') {
     const body = [];
     req.on('data',(chunk)=>{
@@ -52,6 +74,9 @@ if (url === '/create-user' && method === 'POST') {
         const parsedBody = Buffer.concat(body).toString();
         const userName = parsedBody.split('=')[1];
         console.log(userName);
+        console.log(users);
+        users.push(userName);
+        console.log(users,"edit");
         });
         res.statusCode =302;        
         res.setHeader('Location', '/');
