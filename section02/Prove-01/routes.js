@@ -50,9 +50,7 @@ if (url === '/create-user' && method === 'POST') {
         const parsedBody = Buffer.concat(body).toString();
         const userName = parsedBody.split('=')[1];
         console.log(userName);
-        console.log(users);
         users.push(userName);
-        console.log(users,"edit");
         });
         res.statusCode =302;        
         res.setHeader('Location', '/');
