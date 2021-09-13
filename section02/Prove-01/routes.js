@@ -20,30 +20,7 @@ if (url === '/'){
     return res.end();
 }
 
-// if (url === '/users') {
-//     res.write('<html>');
-//     res.write('<head><title>Users</title></head>');
-//     res.write('<body>');
-//     res.write('<h1>Users</h1>');
-//     res.write('<ul>')
-//     res.write('<li>')
-//     res.write('Bob')
-//     res.write('</li>')
-//     res.write('<li>')
-//     res.write('Carol')
-//     res.write('</li>')
-//     res.write('<li>')
-//     res.write('Steve')
-//     res.write('</li>')
-//     res.write('<li>')
-//     res.write('Demi')
-//     res.write('</li>')
-//     res.write('</ul>')
-//     res.write('</body>');
-//     res.write('</html>');
-//     return res.end
-    
-// }
+
 
 if (url === '/users') {
     res.write('<html>');
@@ -51,13 +28,11 @@ if (url === '/users') {
     res.write('<body>');
     res.write('<h1>Users</h1>');
     res.write('<ul>')
-    // console.log(users, "before foreach");
     users.forEach(element => {
         res.write('<li>')
         res.write(element)
         res.write('</li>')
     });
-    // console.log(users, "after foreach");
     res.write('</ul>')
     res.write('<a href="/">Go Back to Form</a>')
     res.write('</body>');
@@ -82,28 +57,8 @@ if (url === '/create-user' && method === 'POST') {
         res.statusCode =302;        
         res.setHeader('Location', '/');
         return res.end();
-        
-
     };
-   
-    
 
-
-
-// res.setHeader('Content-Type', 'text/html');
-// res.write('<html>');
-// res.write('<head><title>MyFirst Page</title></head>');
-// res.write('<body><h1>Hello from my Node.js Server</h1></body>');
-// res.write('</html>');
-// res.end();
 };
 
-// module.exports = requestHandler;
-
-// module.exports = {
-//     handler: requestHandler,
-//     someText: 'some hard coded text'
-// };
-
 exports.handler = requestHandler;
-// exports.someText = 'some hard coded text';
