@@ -51,14 +51,15 @@ if (url === '/users') {
     res.write('<body>');
     res.write('<h1>Users</h1>');
     res.write('<ul>')
-    console.log(users, "before foreach");
+    // console.log(users, "before foreach");
     users.forEach(element => {
         res.write('<li>')
         res.write(element)
         res.write('</li>')
     });
-    console.log(users, "after foreach");
+    // console.log(users, "after foreach");
     res.write('</ul>')
+    res.write('<a href="/">Go Back to Form</a>')
     res.write('</body>');
     res.write('</html>');
     return res.end
@@ -89,12 +90,12 @@ if (url === '/create-user' && method === 'POST') {
 
 
 
-res.setHeader('Content-Type', 'text/html');
-res.write('<html>');
-res.write('<head><title>MyFirst Page</title></head>');
-res.write('<body><h1>Hello from my Node.js Server</h1></body>');
-res.write('</html>');
-res.end();
+// res.setHeader('Content-Type', 'text/html');
+// res.write('<html>');
+// res.write('<head><title>MyFirst Page</title></head>');
+// res.write('<body><h1>Hello from my Node.js Server</h1></body>');
+// res.write('</html>');
+// res.end();
 };
 
 // module.exports = requestHandler;
